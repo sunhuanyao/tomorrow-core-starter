@@ -12,6 +12,9 @@ public class RegionAutoConfiguration {
 
     @Bean
     public ApplicationRegionFactory applicationRegionFactory(RegionProperties regionProperties){
+        if(regionProperties == null || regionProperties.getFileName() == null){
+            return new ApplicationRegionFactory();
+        }
         return new ApplicationRegionFactory(regionProperties.getFileName());
     }
 
